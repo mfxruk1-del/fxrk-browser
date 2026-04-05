@@ -1,0 +1,73 @@
+"use strict";
+// ============================================================
+// FXRK Browser - Shared TypeScript Types
+// ============================================================
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.IPC_CHANNELS = void 0;
+// IPC Channel Names
+exports.IPC_CHANNELS = {
+    // Browser
+    TAB_CREATE: 'tab:create',
+    TAB_CLOSE: 'tab:close',
+    TAB_SWITCH: 'tab:switch',
+    TAB_UPDATE: 'tab:update',
+    TAB_REORDER: 'tab:reorder',
+    TAB_PIN: 'tab:pin',
+    TAB_MUTE: 'tab:mute',
+    TAB_DUPLICATE: 'tab:duplicate',
+    NAVIGATE: 'navigate',
+    NAVIGATE_BACK: 'navigate:back',
+    NAVIGATE_FORWARD: 'navigate:forward',
+    NAVIGATE_REFRESH: 'navigate:refresh',
+    NAVIGATE_STOP: 'navigate:stop',
+    NAVIGATE_HOME: 'navigate:home',
+    // Privacy
+    PRIVACY_GET_SETTINGS: 'privacy:getSettings',
+    PRIVACY_SET_SETTINGS: 'privacy:setSettings',
+    PRIVACY_GET_GRADE: 'privacy:getGrade',
+    PRIVACY_GET_BLOCKED_COUNT: 'privacy:getBlockedCount',
+    PRIVACY_TOGGLE_SITE: 'privacy:toggleSite',
+    PRIVACY_CLEAR_COOKIES: 'privacy:clearCookies',
+    PRIVACY_GET_COOKIES: 'privacy:getCookies',
+    // Auth
+    AUTH_GET_ACCOUNTS: 'auth:getAccounts',
+    AUTH_ADD_ACCOUNT: 'auth:addAccount',
+    AUTH_REMOVE_ACCOUNT: 'auth:removeAccount',
+    AUTH_GET_PROFILES: 'auth:getProfiles',
+    AUTH_SWITCH_PROFILE: 'auth:switchProfile',
+    AUTH_CREATE_PROFILE: 'auth:createProfile',
+    AUTH_GET_CREDENTIALS: 'auth:getCredentials',
+    AUTH_SAVE_CREDENTIAL: 'auth:saveCredential',
+    AUTH_DELETE_CREDENTIAL: 'auth:deleteCredential',
+    // Phone
+    PHONE_CONNECT: 'phone:connect',
+    PHONE_DISCONNECT: 'phone:disconnect',
+    PHONE_GET_STATUS: 'phone:getStatus',
+    PHONE_GET_CONVERSATIONS: 'phone:getConversations',
+    PHONE_GET_MESSAGES: 'phone:getMessages',
+    PHONE_SEND_MESSAGE: 'phone:sendMessage',
+    PHONE_SEND_LINK: 'phone:sendLink',
+    PHONE_SEND_NOTE: 'phone:sendNote',
+    PHONE_CODE_DETECTED: 'phone:codeDetected',
+    PHONE_SYNC_CLIPBOARD: 'phone:syncClipboard',
+    // Settings
+    SETTINGS_GET: 'settings:get',
+    SETTINGS_SET: 'settings:set',
+    SETTINGS_RESET: 'settings:reset',
+    SETTINGS_EXPORT: 'settings:export',
+    SETTINGS_IMPORT: 'settings:import',
+    // System
+    WINDOW_MINIMIZE: 'window:minimize',
+    WINDOW_MAXIMIZE: 'window:maximize',
+    WINDOW_CLOSE: 'window:close',
+    WINDOW_IS_MAXIMIZED: 'window:isMaximized',
+    FIND_IN_PAGE: 'find:inPage',
+    FIND_STOP: 'find:stop',
+    DEVTOOLS_OPEN: 'devtools:open',
+    SCREENSHOT_CAPTURE: 'screenshot:capture',
+    DOWNLOAD_ITEM: 'download:item',
+    DOWNLOAD_PAUSE: 'download:pause',
+    DOWNLOAD_RESUME: 'download:resume',
+    DOWNLOAD_CANCEL: 'download:cancel',
+};
+//# sourceMappingURL=types.js.map
