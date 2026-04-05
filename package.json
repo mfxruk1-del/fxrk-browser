@@ -1,0 +1,90 @@
+{
+  "name": "fxrk-browser",
+  "version": "1.0.0",
+  "description": "FXRK Browser - Privacy-first desktop browser with phone integration",
+  "main": "dist-electron/main.js",
+  "homepage": "https://github.com/fxrk/browser",
+  "author": {
+    "name": "FXRK",
+    "email": "fxrk@fxrk.dev"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:vite\" \"npm run dev:electron\"",
+    "dev:vite": "vite",
+    "dev:electron": "wait-on http://localhost:5173 && cross-env NODE_ENV=development node scripts/launch-electron.js",
+    "build": "npm run build:vite && npm run build:electron",
+    "build:vite": "vite build",
+    "build:electron": "tsc -p tsconfig.node.json",
+    "dist": "npm run build && electron-builder --win",
+    "dist:dir": "npm run build && electron-builder --win --dir",
+    "lint": "eslint src electron --ext .ts,.tsx",
+    "test": "jest"
+  },
+  "dependencies": {
+    "better-sqlite3": "^9.4.0",
+    "clsx": "^2.1.0",
+    "crypto-js": "^4.2.0",
+    "date-fns": "^3.3.0",
+    "electron-log": "^5.0.3",
+    "electron-store": "^8.1.0",
+    "lucide-react": "^0.323.0",
+    "node-fetch": "^3.3.2",
+    "puppeteer-core": "^21.7.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tldts": "^6.1.0",
+    "uuid": "^9.0.0",
+    "zustand": "^4.5.0"
+  },
+  "devDependencies": {
+    "@electron-toolkit/preload": "^3.0.0",
+    "@electron-toolkit/utils": "^3.0.0",
+    "@electron/rebuild": "^4.0.3",
+    "@types/better-sqlite3": "^7.6.8",
+    "@types/crypto-js": "^4.2.2",
+    "@types/jest": "^29.5.11",
+    "@types/node": "^20.11.5",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
+    "@types/uuid": "^9.0.7",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.17",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^27.3.11",
+    "electron-builder": "^24.9.1",
+    "eslint": "^8.56.0",
+    "jest": "^29.7.0",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.fxrk.browser",
+    "productName": "FXRK Browser",
+    "copyright": "Copyright © 2024 FXRK",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "resources/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "resources/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

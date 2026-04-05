@@ -1,0 +1,46 @@
+appId: com.fxrk.browser
+productName: FXRK Browser
+copyright: "Copyright © 2024 FXRK"
+buildVersion: "1.0.0"
+
+directories:
+  output: release
+  buildResources: resources
+
+files:
+  - dist/**/*
+  - dist-electron/**/*
+  - "!dist-electron/**/*.map"
+  - resources/**/*
+  - node_modules/**/*
+  - "!node_modules/.cache/**/*"
+
+extraResources:
+  - from: electron/privacy/filter-lists
+    to: filter-lists
+    filter:
+      - "*.txt"
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+  icon: resources/icon.ico
+  signingHashAlgorithms:
+    - sha256
+  requestedExecutionLevel: asInvoker
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowElevation: true
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: "FXRK Browser"
+  installerHeaderIcon: resources/icon.ico
+  installerIcon: resources/icon.ico
+  uninstallerIcon: resources/icon.ico
+
+publish: null

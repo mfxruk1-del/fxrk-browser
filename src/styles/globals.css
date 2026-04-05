@@ -1,0 +1,454 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   FXRK Browser - Global Styles
+   Cyberpunk terminal theme
+   ============================================================ */
+
+:root {
+  /* Core colors */
+  --bg: #0a0a0a;
+  --bg-alt: #111111;
+  --bg-card: #141414;
+  --bg-hover: #1a1a1a;
+  --border: #1e1e1e;
+  --border-bright: #2a2a2a;
+
+  /* Brand colors */
+  --green: #00ff41;
+  --green-dim: #00cc33;
+  --green-glow: rgba(0, 255, 65, 0.15);
+  --purple: #bc13fe;
+  --purple-dim: #9900cc;
+  --purple-glow: rgba(188, 19, 254, 0.15);
+  --cyan: #00d9ff;
+  --cyan-dim: #00aacc;
+  --cyan-glow: rgba(0, 217, 255, 0.15);
+  --red: #ff0040;
+  --orange: #ff6600;
+  --yellow: #ffcc00;
+
+  /* Text */
+  --text: #e0e0e0;
+  --text-dim: #888888;
+  --text-muted: #444444;
+
+  /* Glassmorphism */
+  --glass-bg: rgba(14, 14, 14, 0.85);
+  --glass-border: rgba(0, 255, 65, 0.08);
+  --glass-blur: blur(12px);
+
+  /* Sizing */
+  --titlebar-height: 36px;
+  --toolbar-height: 52px;
+  --tab-height: 36px;
+  --sidebar-width: 320px;
+  --statusbar-height: 24px;
+  --tab-bar-total: calc(var(--tab-height) + 1px);
+
+  /* Fonts */
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
+
+  /* Transitions */
+  --transition: 150ms ease;
+  --transition-slow: 300ms ease;
+}
+
+/* ── Reset & Base ─────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+  cursor: default;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Remove loading screen once React mounts */
+#loading {
+  display: none !important;
+}
+
+/* ── Scrollbars ───────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3a;
+}
+
+/* ── Selection ────────────────────────────────────────────── */
+::selection {
+  background: rgba(0, 255, 65, 0.2);
+  color: var(--green);
+}
+
+/* ── Links ────────────────────────────────────────────────── */
+a {
+  color: var(--cyan);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--green);
+  text-decoration: underline;
+}
+
+/* ── Input reset ──────────────────────────────────────────── */
+input, textarea, button, select {
+  font-family: var(--font-mono);
+  font-size: inherit;
+  outline: none;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ── Glass panels ─────────────────────────────────────────── */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+}
+
+/* ── Neon glow effects ────────────────────────────────────── */
+.glow-green {
+  box-shadow: 0 0 8px var(--green-glow), 0 0 16px rgba(0, 255, 65, 0.05);
+}
+
+.glow-purple {
+  box-shadow: 0 0 8px var(--purple-glow), 0 0 16px rgba(188, 19, 254, 0.05);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 8px var(--cyan-glow), 0 0 16px rgba(0, 217, 255, 0.05);
+}
+
+.text-glow-green {
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
+}
+
+.text-glow-purple {
+  text-shadow: 0 0 8px rgba(188, 19, 254, 0.6);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 8px rgba(0, 217, 255, 0.6);
+}
+
+/* ── Interactive states ───────────────────────────────────── */
+.interactive {
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.interactive:hover {
+  background: var(--bg-hover);
+}
+
+.interactive:active {
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+
+/* ── Drag region for frameless window ────────────────────── */
+.drag-region {
+  -webkit-app-region: drag;
+}
+
+.no-drag {
+  -webkit-app-region: no-drag;
+}
+
+/* ── Utility classes ──────────────────────────────────────── */
+.truncate-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.code-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  overflow-x: auto;
+}
+
+/* ── Cyberpunk scan line overlay (subtle) ─────────────────── */
+.scanlines::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* ── Tab container borders ────────────────────────────────── */
+.container-border-blue   { border-bottom: 2px solid #0088ff; }
+.container-border-green  { border-bottom: 2px solid #00cc44; }
+.container-border-orange { border-bottom: 2px solid #ff8800; }
+.container-border-red    { border-bottom: 2px solid #ff2244; }
+.container-border-purple { border-bottom: 2px solid #bc13fe; }
+.container-border-cyan   { border-bottom: 2px solid #00d9ff; }
+
+/* ── Privacy grade colors ─────────────────────────────────── */
+.grade-a { color: var(--green); }
+.grade-b { color: #88ff00; }
+.grade-c { color: var(--yellow); }
+.grade-d { color: var(--orange); }
+.grade-f { color: var(--red); }
+
+/* ── Panel headers ────────────────────────────────────────── */
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* ── Form elements ────────────────────────────────────────── */
+.fxrk-input {
+  width: 100%;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.fxrk-input:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px rgba(0, 255, 65, 0.1);
+  color: var(--green);
+}
+
+.fxrk-input::placeholder {
+  color: var(--text-muted);
+}
+
+.fxrk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all var(--transition);
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.fxrk-btn-primary {
+  background: rgba(0, 255, 65, 0.1);
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.fxrk-btn-primary:hover {
+  background: rgba(0, 255, 65, 0.2);
+  box-shadow: 0 0 8px var(--green-glow);
+}
+
+.fxrk-btn-secondary {
+  background: var(--bg-alt);
+  border-color: var(--border);
+  color: var(--text-dim);
+}
+
+.fxrk-btn-secondary:hover {
+  border-color: var(--green);
+  color: var(--text);
+}
+
+.fxrk-btn-danger {
+  background: rgba(255, 0, 64, 0.1);
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.fxrk-btn-danger:hover {
+  background: rgba(255, 0, 64, 0.2);
+}
+
+/* ── Toggle switch ────────────────────────────────────────── */
+.fxrk-toggle {
+  position: relative;
+  display: inline-flex;
+  width: 36px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.fxrk-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.fxrk-toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  transition: all var(--transition);
+}
+
+.fxrk-toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  left: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--text-muted);
+  border-radius: 50%;
+  transition: all var(--transition);
+}
+
+.fxrk-toggle input:checked + .fxrk-toggle-slider {
+  background: rgba(0, 255, 65, 0.15);
+  border-color: var(--green);
+}
+
+.fxrk-toggle input:checked + .fxrk-toggle-slider::before {
+  transform: translateX(16px) translateY(-50%);
+  background: var(--green);
+  box-shadow: 0 0 6px var(--green);
+}
+
+/* ── Loading/Spinner ──────────────────────────────────────── */
+.fxrk-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--border);
+  border-top-color: var(--green);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Section dividers ─────────────────────────────────────── */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 8px 0;
+}
+
+/* ── Badge ────────────────────────────────────────────────── */
+.fxrk-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ── Context menu styling ─────────────────────────────────── */
+.context-menu {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px;
+  min-width: 160px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(0, 255, 65, 0.05);
+  z-index: 10000;
+}
+
+.context-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--text);
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.context-menu-item:hover {
+  background: var(--bg-hover);
+  color: var(--green);
+}
+
+.context-menu-separator {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 0;
+}

@@ -1,0 +1,17 @@
+node_modules/
+dist/
+dist-electron/
+release/
+.env
+.env.local
+*.log
+*.lock
+!package-lock.json
+.DS_Store
+Thumbs.db
+*.ico
+!resources/icon.ico
+electron/privacy/filter-lists/*.txt
+!electron/privacy/filter-lists/.gitkeep
+electron/privacy/custom-filters.txt
+userData/

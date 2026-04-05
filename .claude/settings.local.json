@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(where python:*)",
+      "Bash(where python3:*)",
+      "Read(//c/Program Files \\(x86\\)/Python38-32/**)",
+      "Read(//c/Users/mfarooq/AppData/Local/Programs/**)",
+      "Bash(npm list:*)",
+      "Bash(npx electron-rebuild:*)",
+      "Bash(/c/Users/mfarooq/Desktop/fxrk-browser/electron/utils/constants.ts:*)",
+      "Bash(npx tsc:*)"
+    ]
+  }
+}
